@@ -1,0 +1,49 @@
+class Solution{
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+    
+        Arrays.sort(arr);
+        return arr[k-1];
+     }
+        
+}
+Using Quick Sort
+
+class Solution{
+    public static int kthSmallest(int[] arr, int l, int r, int k) 
+    { 
+
+        while(l<=r){
+            int p=partition(arr,l,r);
+            if(p==k-1)
+                return p;                 //Time Complexity : O(nlogn)
+            else if(p>k-1)
+                r=p-1;
+            else
+                l=p+1;
+        }
+        return -1;
+    } 
+    
+    static int partition(int arr[],int l,int r)
+    {
+        int pivot = arr[r];
+        int i = l-1;
+        for(int j=l;j<=r-1;j++)
+        {
+            if(arr[j]<pivot)          //Time Complexity : 0(n^2)
+            {
+                 i++;
+                int temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+               
+            }
+        }
+        int temp=arr[i+1];
+        arr[i+1]=arr[r];
+        arr[r]=temp;
+        return i+1;
+       
+    }
+}
