@@ -16,7 +16,7 @@ class Solution{
         while(l<=r){
             int p=partition(arr,l,r);
             if(p==k-1)
-                return p;                 //Time Complexity : O(nlogn)
+                return arr[p];                 //Time Complexity : O(nlogn)
             else if(p>k-1)
                 r=p-1;
             else
