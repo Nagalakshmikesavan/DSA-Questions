@@ -1,0 +1,33 @@
+class Solution {
+    int getPairsCount(int[] arr, int n, int k) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int count =0;
+       for(int i=0;i<n;i++)
+       {
+           map.put(arr[i],map.getOrDefault(arr[i],0)+1);
+       }
+       
+       for(int i=0;i<n;i++)
+       {
+           if(map.get(k-arr[i])!=null)
+           {
+               count += map.get(k-arr[i]);
+           }
+          if(k-arr[i]==arr[i])
+          {
+              count--;
+          }
+       }
+       return count/2;
+    }
+}
+
+N = 4, K = 6
+arr[] = {1, 5, 7, 1}
+Output: 2
+Explanation: 
+arr[0] + arr[1] = 1 + 5 = 6 
+and arr[1] + arr[3] = 5 + 1 = 6.
+
+Expected Time Complexity: O(N)
+Expected Auxiliary Space: O(N)
